@@ -25,9 +25,8 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
     static ArrayList<String> list=new ArrayList<>();
-
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+      Scanner scan = new Scanner(System.in);
         System.out.println("Enter the User's First Name");
         String firstName = scan.nextLine();
         System.out.println("Enter the User's Last Name");
@@ -67,7 +66,7 @@ public class UserRegistration {
         list.add("abc@1.com");
         list.add("abc@gmail.com.com");
         list.add("abc+100@gmail.com");
-        String regex = "^[a-z0-9+_.-]+@+[a-z]+.+[a-z]+.+[a-z]$";
+        String regex = "[a-z]{3,}[-.+]{0,1}[10]{0,3}[@]{1}[10]{0,3}[a-z]{0,5}[.]{0,1}[a-z]{0,3}[,.]{0,1}[a-z]{0,3}";
         Pattern pattern = Pattern.compile(regex);
         for(int i = 0; i < list.size(); i++)
         {
@@ -75,22 +74,18 @@ public class UserRegistration {
             boolean result = matcher.matches();
             System.out.println("Given sample email id : " + list.get(i) + " is valid : " + result);
         }
-        for(int i=list.size()-1;i>1;i--)
-        {
-            list.remove(i);
-        }
+   
     }
 
     // Method to check mobile
     public static boolean validPhoneNo(String phoneNo) {
         boolean flag = false;
-        String regex = "^\\++[91]+\\s+[789]\\d{9}$";
+        String regex = "[0-9]{1,3}[\\s]{1}[6789]{1}[0-9]{9}";
         Pattern pattern = Pattern.compile(regex);
-        for(int i = 0; i < phoneNo.length(); i++)
-        {
+       
             Matcher matcher=pattern.matcher(phoneNo);
             flag = matcher.matches();
-        }
+        
         return flag;
     }
 
